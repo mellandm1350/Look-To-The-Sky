@@ -1,0 +1,68 @@
+[gd_scene load_steps=12 format=3 uid="uid://cqy136uhoycx1"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_84jdv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k260y"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4wwgs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lhky1"]
+albedo_color = Color(0.305882, 0, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_gwwx6"]
+material = SubResource("StandardMaterial3D_lhky1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gbj1u"]
+albedo_color = Color(0.87451, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ivjhp"]
+material = SubResource("StandardMaterial3D_gbj1u")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4mj4t"]
+albedo_color = Color(0.305882, 0, 1, 1)
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_ynabl"]
+material = SubResource("StandardMaterial3D_4mj4t")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pg7xx"]
+albedo_color = Color(0.87451, 0, 0, 1)
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_mr8by"]
+material = SubResource("StandardMaterial3D_pg7xx")
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_84jdv")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Character" type="Node3D" parent="Pivot"]
+
+[node name="BodyCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_k260y")
+
+[node name="BodyMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_4wwgs")
+
+[node name="LeftEye" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.154656, 0.391832, -0.403891)
+mesh = SubResource("SphereMesh_gwwx6")
+
+[node name="RightEye" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.150953, 0.407363, -0.409221)
+mesh = SubResource("SphereMesh_ivjhp")
+
+[node name="LeftArm" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.31134e-08, -0.3, 0, 0.3, -1.31134e-08, 0, 0, 0, 0.3, 0.621729, 0.282843, 0)
+mesh = SubResource("TubeTrailMesh_ynabl")
+
+[node name="RightArm" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.31134e-08, -0.3, 0, 0.3, -1.31134e-08, 0, 0, 0, 0.3, -0.622, 0.283, 0)
+mesh = SubResource("TubeTrailMesh_mr8by")
+
+[node name="LeftFoot" type="MeshInstance3D" parent="."]
+transform = Transform3D(5.73206e-16, 1.31134e-08, 0.3, 0.3, -1.31134e-08, 0, 1.31134e-08, 0.3, -1.31134e-08, 0.231136, -0.511504, -0.423861)
+mesh = SubResource("TubeTrailMesh_ynabl")
+
+[node name="RightFoot" type="MeshInstance3D" parent="."]
+transform = Transform3D(5.73206e-16, 1.31134e-08, 0.3, 0.3, -1.31134e-08, 0, 1.31134e-08, 0.3, -1.31134e-08, -0.250674, -0.511162, -0.385276)
+mesh = SubResource("TubeTrailMesh_mr8by")
