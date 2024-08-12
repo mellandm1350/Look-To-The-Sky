@@ -49,8 +49,8 @@ func _physics_process(delta):
 			velocity.z = direction.z * speed
 		else:
 			#slows player instead of instantly stopping
-			velocity.x = lerp(velocity.x, direction.x * speed, delta * 6.0)
-			velocity.z = lerp(velocity.z, direction.z * speed, delta * 6.0)
+			velocity.x = lerp(velocity.x, direction.x * speed, delta * 6.5)
+			velocity.z = lerp(velocity.z, direction.z * speed, delta * 6.5)
 	else:
 		#Allow player to still move in air when movement is no longer pressed
 		velocity.x = lerp(velocity.x, direction.x * speed, delta * 2.0)

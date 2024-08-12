@@ -18,6 +18,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("pause") and !get_tree().paused:
 		_paused()
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		$PanelContainer/VBoxContainer/Resume.grab_focus()
 		
 	elif Input.is_action_just_pressed("pause") and get_tree().paused:
 		_resume()
