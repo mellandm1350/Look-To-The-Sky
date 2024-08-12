@@ -12,7 +12,7 @@ func _input(event):
 		rotate(Vector3.UP, -event.relative.x * 0.001)
 
 func _physics_process(delta):
-	print("Speed is: ", speed)
+	#print("Speed is: ", speed)
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta

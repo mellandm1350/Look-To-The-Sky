@@ -25,7 +25,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_8u7ho"]
 resource_name = "close"
-length = 0.6
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -41,7 +41,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_rt12t"]
 resource_name = "open"
-length = 0.6
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -67,9 +67,10 @@ _data = {
 [node name="Pivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.667776, 1.1627, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pivot"]
-transform = Transform3D(1.472, 0, 0, 0, 2.705, 0, 0, 0, 0.186, 0.667776, 0.18519, 0)
+[node name="StaticBody3D" type="StaticBody3D" parent="Pivot" node_paths=PackedStringArray("animation_player")]
+transform = Transform3D(1.27347, 0, 0, 0, 2.49419, 0, 0, 0, 0.186, 0.6, 0, 0)
 script = ExtResource("1_ad5h6")
+animation_player = NodePath("../../AnimationPlayer")
 
 [node name="DoorCollision" type="CollisionShape3D" parent="Pivot/StaticBody3D"]
 shape = SubResource("BoxShape3D_rkxu1")

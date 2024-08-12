@@ -1,6 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://cqy136uhoycx1"]
+[gd_scene load_steps=14 format=3 uid="uid://cqy136uhoycx1"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_84jdv"]
+[ext_resource type="Script" path="res://Scripts/Camera.gd" id="2_jui1a"]
+[ext_resource type="Script" path="res://Scripts/Raycast.gd" id="3_sjkgm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k260y"]
 
@@ -35,7 +37,10 @@ script = ExtResource("1_84jdv")
 
 [node name="Pivot" type="Node3D" parent="."]
 
-[node name="Character" type="Node3D" parent="Pivot"]
+[node name="Camera3D" type="Camera3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.400925, -0.0963555)
+cull_mask = 1048573
+script = ExtResource("2_jui1a")
 
 [node name="BodyCollision" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_k260y")
@@ -45,10 +50,12 @@ mesh = SubResource("CapsuleMesh_4wwgs")
 
 [node name="LeftEye" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.154656, 0.391832, -0.403891)
+layers = 2
 mesh = SubResource("SphereMesh_gwwx6")
 
 [node name="RightEye" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.150953, 0.407363, -0.409221)
+layers = 2
 mesh = SubResource("SphereMesh_ivjhp")
 
 [node name="LeftArm" type="MeshInstance3D" parent="."]
@@ -66,3 +73,7 @@ mesh = SubResource("TubeTrailMesh_ynabl")
 [node name="RightFoot" type="MeshInstance3D" parent="."]
 transform = Transform3D(5.73206e-16, 1.31134e-08, 0.3, 0.3, -1.31134e-08, 0, 1.31134e-08, 0.3, -1.31134e-08, -0.250674, -0.511162, -0.385276)
 mesh = SubResource("TubeTrailMesh_mr8by")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.393633, -0.304434)
+script = ExtResource("3_sjkgm")
