@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bninr8gwst8cf"]
+[gd_scene load_steps=3 format=3 uid="uid://bninr8gwst8cf"]
 
 [ext_resource type="Script" path="res://Scripts/PauseMenu.gd" id="1_uonk6"]
+[ext_resource type="Script" path="res://Scripts/FocusButton.gd" id="2_au6dk"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -42,6 +43,7 @@ uppercase = true
 [node name="Resume" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "Resume"
+script = ExtResource("2_au6dk")
 
 [node name="Restart" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
