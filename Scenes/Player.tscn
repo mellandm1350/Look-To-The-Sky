@@ -1,7 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://cqy136uhoycx1"]
+[gd_scene load_steps=13 format=3 uid="uid://cqy136uhoycx1"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_84jdv"]
-[ext_resource type="Script" path="res://Scripts/Camera.gd" id="2_jui1a"]
 [ext_resource type="Script" path="res://Scripts/Raycast.gd" id="3_sjkgm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k260y"]
@@ -40,7 +39,6 @@ script = ExtResource("1_84jdv")
 [node name="Camera3D" type="Camera3D" parent="Pivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.400925, -0.0963555)
 cull_mask = 1048573
-script = ExtResource("2_jui1a")
 
 [node name="BodyCollision" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_k260y")
