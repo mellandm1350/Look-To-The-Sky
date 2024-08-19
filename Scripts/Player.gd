@@ -1,15 +1,24 @@
 extends CharacterBody3D
 
 const JUMP_VELOCITY = 4.5
+const SENSITIVITY = 0.001
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var speed = 5.0
 
+@onready var camera = $Pivot/Camera3D
+
+func _ready():
+	#Have mouse cursor part of the game window
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 func _input(event):
 	#Rotate player model when mouse is moved left or right
 	if event is InputEventMouseMotion:
-		rotate(Vector3.UP, -event.relative.x * 0.001)
+		rotate_y(-event.relative.x * SENSITIVITY)
+		camera.rotate_x(-event.relative.y * SENSITIVITY)
+		camera.rotation.x = clamp(camera.rotation.x, -1, 1)
 
 func _physics_process(delta):
 	#print("Speed is: ", speed)
