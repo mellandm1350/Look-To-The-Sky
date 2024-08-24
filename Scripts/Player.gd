@@ -8,6 +8,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var speed = 5.0
 
 @onready var camera = $Pivot/Camera3D
+@onready var raycast_01 = $RayCast01
 
 func _ready():
 	#Have mouse cursor part of the game window
@@ -20,6 +21,17 @@ func _input(event):
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, -1, 1)
 
+func _process(delta):
+	if raycast_01.is_colliding():
+		var hit_object = raycast_01.get_collider()
+		if hit_object.has_method("_interact") and Input.is_action_just_pressed("interact"):
+			#print("opn")
+			hit_object._interact()
+		if Input.is_action_pressed("jump") and Input.is_action_pressed("move_forward"):
+			#TODO Fix the wall climbing to prevent infinte climbing
+			print("Velocity Y: " , velocity.y)
+			velocity.y += 0.1
+
 func _physics_process(delta):
 	#print("Speed is: ", speed)
 	# Add the gravity.
@@ -27,12 +39,14 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 		
 	#Have speed slower when not moving forward
-	if Input.is_action_pressed("move_forward"):
-		speed += 0.01
-		if speed > 10:
-			speed = 10
+	if Input.is_action_pressed("move_forward") and !raycast_01.is_colliding():
+		speed += 0.03
+		if speed > 10.0:
+			speed = 10.0
+	elif Input.is_action_pressed("move_forward") and raycast_01.is_colliding() and speed >= 3.0:
+		speed -= 0.2
 	else:
-		speed = 5
+		speed = 3.0
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():

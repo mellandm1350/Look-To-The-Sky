@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://cqy136uhoycx1"]
+[gd_scene load_steps=12 format=3 uid="uid://cqy136uhoycx1"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_84jdv"]
-[ext_resource type="Script" path="res://Scripts/Raycast.gd" id="3_sjkgm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k260y"]
 
@@ -40,7 +39,7 @@ script = ExtResource("1_84jdv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.400925, -0.0963555)
 cull_mask = 1048573
 
-[node name="BodyCollision" type="CollisionShape3D" parent="."]
+[node name="StandingBodyCollision" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_k260y")
 
 [node name="BodyMesh" type="MeshInstance3D" parent="."]
@@ -72,6 +71,5 @@ mesh = SubResource("TubeTrailMesh_ynabl")
 transform = Transform3D(5.73206e-16, 1.31134e-08, 0.3, 0.3, -1.31134e-08, 0, 1.31134e-08, 0.3, -1.31134e-08, -0.250674, -0.511162, -0.385276)
 mesh = SubResource("TubeTrailMesh_mr8by")
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.393633, -0.304434)
-script = ExtResource("3_sjkgm")
+[node name="RayCast01" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.0116476, -0.304434)
